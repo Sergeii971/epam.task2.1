@@ -2,9 +2,14 @@ package test.verbovskiy.task9.repository;
 
 import com.verbovskiy.task9.comparator.PyramidComparator;
 import com.verbovskiy.task9.creator.PyramidCreator;
+import com.verbovskiy.task9.entity.Dot;
+import com.verbovskiy.task9.entity.PyramidParameters;
 import com.verbovskiy.task9.entity.TriangularPyramid;
 import com.verbovskiy.task9.exception.TaskException;
 import com.verbovskiy.task9.repository.PyramidRepository;
+import com.verbovskiy.task9.repository.impl.PyramidIdSpecificationImpl;
+import com.verbovskiy.task9.repository.impl.PyramidVolumeSpecificationImpl;
+import com.verbovskiy.task9.warehouse.PyramidParametersWarehouse;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -23,7 +28,6 @@ public class PyramidRepositoryTest {
         PyramidCreator creator = new PyramidCreator();
         List<TriangularPyramid> pyramids = creator.createPyramidsFile(FILE_NAME);
         PyramidRepository repository = PyramidRepository.getInstance();
-
         repository.addAll(pyramids);
     }
 
