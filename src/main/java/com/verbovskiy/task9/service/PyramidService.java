@@ -102,13 +102,9 @@ public class PyramidService {
 
     private double calculateTriangleArea(Dot firstTop, Dot secondTop, Dot thirdTop) {
         double firstSide = calculateSideLength(firstTop, secondTop);
-        logger.log(Level.INFO, "length of first side = " + firstSide);
         double secondSide = calculateSideLength(firstTop, thirdTop);
-        logger.log(Level.INFO, "length of second side = " + secondSide);
         double thirdSide = calculateSideLength(secondTop, thirdTop);
-        logger.log(Level.INFO, "length of third side = " + thirdSide);
         double perimeter = calculatePerimeter(firstSide, secondSide, thirdSide);
-        logger.log(Level.INFO, "perimeter = " + perimeter);
         double halfPerimeter = perimeter / 2;
 
         return Math.sqrt((halfPerimeter - firstSide) * (halfPerimeter - secondSide) * (halfPerimeter - thirdSide)
