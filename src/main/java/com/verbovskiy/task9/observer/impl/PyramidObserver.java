@@ -11,8 +11,8 @@ import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-public class PyramidObserverImpl implements Observer<PyramidEvent> {
-    private static Logger logger = LogManager.getLogger(PyramidObserverImpl.class);
+public class PyramidObserver implements Observer<PyramidEvent> {
+    private static Logger logger = LogManager.getLogger(PyramidObserver.class);
 
     @Override
     public void actionPerformed(PyramidEvent eventObject) {

@@ -1,13 +1,20 @@
 package com.verbovskiy.task9.entity;
 
 import com.verbovskiy.task9.exception.TaskException;
+import com.verbovskiy.task9.observer.Observable;
+import com.verbovskiy.task9.observer.Observer;
+import com.verbovskiy.task9.observer.PyramidEvent;
+import com.verbovskiy.task9.observer.impl.PyramidObserver;
 import com.verbovskiy.task9.util.IdGenerator;
 
-public class TriangularPyramid extends Shape{
+import java.util.EventObject;
+
+public class TriangularPyramid extends Shape implements Observable {
     private Dot firstFoundationTop;
     private Dot secondFoundationTop;
     private Dot thirdFoundationTop;
     private Dot mainTop;
+    private Observer observer;
 
     public TriangularPyramid(Dot firstFoundationTop, Dot secondFoundationTop,
                              Dot thirdFoundationTop, Dot mainTop) throws TaskException {
@@ -20,6 +27,27 @@ public class TriangularPyramid extends Shape{
         this.secondFoundationTop = secondFoundationTop;
         this.thirdFoundationTop = thirdFoundationTop;
         this.mainTop = mainTop;
+        this.observer = new PyramidObserver();
+    }
+
+    public void setFirstFoundationTop(Dot firstFoundationTop) {
+        this.firstFoundationTop = firstFoundationTop;
+        notifyObserver();
+    }
+
+    public void setSecondFoundationTop(Dot secondFoundationTop) {
+        this.secondFoundationTop = secondFoundationTop;
+        notifyObserver();
+    }
+
+    public void setThirdFoundationTop(Dot thirdFoundationTop) {
+        this.thirdFoundationTop = thirdFoundationTop;
+        notifyObserver();
+    }
+
+    public void setMainTop(Dot mainTop) {
+        this.mainTop = mainTop;
+        notifyObserver();
     }
 
     public Dot getFirstFoundationTop() {
@@ -36,6 +64,11 @@ public class TriangularPyramid extends Shape{
 
     public Dot getMainTop() {
         return mainTop;
+    }
+
+    @Override
+    public void notifyObserver() {
+        observer.actionPerformed(new PyramidEvent(this));
     }
 
     @Override

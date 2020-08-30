@@ -49,10 +49,6 @@ public class PyramidParameters {
 
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-
-        stringBuilder.append(volume);
-        stringBuilder.append(lateralSurfaceArea);
-        return stringBuilder.toString();
+        return String.format("%f %f", volume, lateralSurfaceArea);
     }
 }
